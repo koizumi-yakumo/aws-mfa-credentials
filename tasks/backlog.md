@@ -2,12 +2,12 @@
 
 ## 開発環境構築
 
-- [ ] Node.js プロジェクトの初期化 (`npm init`)
-- [ ] TypeScript のインストールと設定 (`typescript`, `@types/node`)
-- [ ] `tsconfig.json` の作成と設定
-- [ ] `src` ディレクトリなど、基本的なプロジェクト構造の作成
-- [ ] AWS SDK for JavaScript v3 のインストール (`@aws-sdk/client-sts`, `@aws-sdk/shared-ini-file-loader`)
-- [ ] 対話的プロンプト用ライブラリのインストール (`inquirer`, `@types/inquirer`)
+- [x] Node.js プロジェクトの初期化 (`npm init`)
+- [x] TypeScript のインストールと設定 (`typescript`, `@types/node`)
+- [x] `tsconfig.json` の作成と設定
+- [x] `src` ディレクトリなど、基本的なプロジェクト構造の作成
+- [x] AWS SDK for JavaScript v3 のインストール (`@aws-sdk/client-sts`, `@aws-sdk/shared-ini-file-loader`)
+- [x] 対話的プロンプト用ライブラリのインストール (`inquirer`, `@types/inquirer`)
 
 ## AWS認証情報処理
 

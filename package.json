@@ -1,0 +1,35 @@
+{
+  "name": "aws-mfa-credentials",
+  "version": "1.0.0",
+  "description": "AWS で MFA 環境でのクレデンシャル情報を取得するサポートツール",
+  "main": "dist/index.js",
+  "bin": {
+    "aws-mfa-credentials": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koizumi-yakumo/aws-mfa-credentials.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/koizumi-yakumo/aws-mfa-credentials/issues"
+  },
+  "homepage": "https://github.com/koizumi-yakumo/aws-mfa-credentials#readme",
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sts": "^3.879.0",
+    "@aws-sdk/shared-ini-file-loader": "^3.370.0",
+    "inquirer": "^12.9.4"
+  }
+}

@@ -3,3 +3,7 @@ tasks/task.md
 
 # IDE
 .idea
+
+# node
+node_modules
+dist
