@@ -15,3 +15,12 @@ npm run build
 ```
 
 コンパイルされた JavaScript ファイルは `dist` ディレクトリに出力されます。
+
+## 実行
+
+以下のコマンドで実行します。
+AWSのプロファイル一覧が表示されます。
+
+```bash
+node dist/index.js
+```
