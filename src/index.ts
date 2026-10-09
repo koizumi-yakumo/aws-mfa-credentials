@@ -1,14 +1,23 @@
 #!/usr/bin/env node
 
-import { loadSharedConfigFiles } from "@aws-sdk/shared-ini-file-loader";
+import { parseArgs } from "node:util";
+import { loadSharedConfigFiles } from "@smithy/shared-ini-file-loader";
 import { STSClient, GetSessionTokenCommand } from "@aws-sdk/client-sts";
 import inquirer from "inquirer";
+import { renderCredentials } from "./shell";
 
 const main = async () => {
+  const { values } = parseArgs({
+    options: {
+      shell: { type: "boolean" },
+    },
+  });
   const { credentialsFile, configFile } = await loadSharedConfigFiles();
   const profiles = Object.keys(credentialsFile);
 
-  const { profile } = await inquirer.prompt([
+  // In --shell mode stdout is evaluated, so keep prompts on stderr.
+  const prompt = inquirer.createPromptModule({ output: process.stderr });
+  const { profile } = await prompt([
     {
       type: "list",
       name: "profile",
@@ -24,7 +33,7 @@ const main = async () => {
   }
   const mfaSerial = selectedProfile.mfa_serial;
 
-  const { token } = await inquirer.prompt([
+  const { token } = await prompt([
     {
       type: "input",
       name: "token",
@@ -50,14 +59,13 @@ const main = async () => {
   const command = new GetSessionTokenCommand({
     SerialNumber: mfaSerial,
     TokenCode: token,
+    DurationSeconds: Number(selectedProfile.duration_seconds ?? 1800),
   });
 
   try {
     const data = await sts.send(command);
     if (data.Credentials) {
-      console.log(`export AWS_ACCESS_KEY_ID=${data.Credentials.AccessKeyId}`);
-      console.log(`export AWS_SECRET_ACCESS_KEY=${data.Credentials.SecretAccessKey}`);
-      console.log(`export AWS_SESSION_TOKEN=${data.Credentials.SessionToken}`);
+      console.log(renderCredentials(data.Credentials, values.shell));
     } else {
       console.error("Could not get temporary credentials.");
       process.exit(1);

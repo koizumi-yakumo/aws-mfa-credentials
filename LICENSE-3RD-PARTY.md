@@ -1,6 +1,6 @@
 This file contains the licenses for the third-party software used in this project.
 
-## @aws-sdk/client-sts, @aws-sdk/shared-ini-file-loader, typescript
+## @aws-sdk/client-sts, @smithy/shared-ini-file-loader, typescript
 
                                 Apache License
                            Version 2.0, January 2004
