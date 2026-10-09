@@ -1,6 +1,6 @@
 {
   "name": "aws-mfa-credentials",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "AWS で MFA 環境でのクレデンシャル情報を取得するサポートツール",
   "main": "dist/index.js",
   "bin": {
